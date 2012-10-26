@@ -10,6 +10,7 @@ http://blog.dave.vc/2008/09/remotely-reboot-cisco-79xx-phone.html
 http://www.cisco.com/en/US/docs/voice_ip_comm/cuipph/all_models/xsi/5_1/english/programming/guide/ip5_1ch2.html
 
 Also it prevents monkeying around by the casual attacker. Some people suggest to allow all usernames and passwords by having authenticate.php look like this:
+
      <?
      php echo "AUTHORIZED";
      ?>
@@ -19,9 +20,11 @@ I'd rather do this the right way(TM).
 Place authenticate.php in your phone server's web directory, like http://voip.example.com/cisco/services/authenticate.php
 
 In your Cisco phone SEPXXXXXXXXXXXX.cnf.xml file, put this to allow authentication:
+
     <authenticationURL>http://voip.example.com/cisco/services/authentication.php</authenticationURL>
 
 Create some passwords, hashes and salts:
+
     # php createhashes.php
     
     Store the username and password in a secure place.
